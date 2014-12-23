@@ -151,6 +151,28 @@ public class GcmEvents : MonoBehaviour {
 }
 ```
 
+
+# Send PUSH notification test
+
+You can send push notification from terminal by `curl` command like following.
+
+```
+$ curl --header "Authorization: key=(put your API key here)" \
+--header Content-Type:"application/json" \
+https://android.googleapis.com/gcm/send \
+-d "{\"registration_ids\":[\"(put your Registration ID here)\"],\"data":{\"message\":\"Hello\"}}"
+```
+
+You have to replace `(put your API key here)` and `(put your Registration ID here)` to your own.
+
+If notification succeed. 
+Ticker and notification message will shown in statusbar like following.
+
+![](https://github.com/snaka/UnityGCMPlugin/blob/master/wiki/Ticker.png)
+
+![](https://github.com/snaka/UnityGCMPlugin/blob/master/wiki/Notification.png)
+
+
 # LICENSE
 
 The MIT License (MIT)
