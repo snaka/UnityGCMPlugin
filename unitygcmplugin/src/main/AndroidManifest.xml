@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="info.snaka.unitygcmpluginlib" >
+
+    <!-- 必要なパーミッション -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <permission
+        android:name="info.snaka.unitygcmplugin.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="info.snaka.unitygcmpluginlib.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <!--
+        <meta-data
+            android:name="apiProjectNumber"
+            android:value="{Google Developer Console のプロジェクト番号}" />
+        -->
+
+        <!-- PUSH通知を受け取るBroadcastReceiver -->
+        <receiver android:name="info.snaka.unitygcmplugin.GcmBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="info.snaka.unitygcmpluginlib" />
+            </intent-filter>
+        </receiver>
+
+        <!-- PUSH通知の内容をステータスバーに表示するためのIntentService -->
+        <service android:name="info.snaka.unitygcmplugin.GcmIntentService" />
+
+        <!-- 通知のタップでアプリを起動するためにUnityPlayerActivityを拡張したクラス -->
+        <activity android:name="info.snaka.unitygcmplugin.CustomUnityPlayerActivity"
+            android:label="@string/app_name"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
