@@ -89,13 +89,13 @@ NOTE: You have to replace `"!{Your project number}"` to your own project number 
 # Usage
 
 
-## Create the "_GcmEvent" 
+## Create the "_GcmEvents" 
 
-Create the empty GameObject named "_GcmEvent" in scene.
+Create the empty GameObject named "_GcmEvents" in scene.
 
-## Attach script to "_GcmEvent"
+## Attach script to "_GcmEvents"
 
-Then attach following script to "_GcmEvent".
+Then attach following script to "_GcmEvents".
 
 ```
 using System.Collections;
